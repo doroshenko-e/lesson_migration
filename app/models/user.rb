@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   #scope :name, -> {where ("first_name ILIKE 'j%'")}
   #scope :age, ->{where ("Date.today - 21 >= ?", birthday)}
   validates :email, :uniqueness => {:case_sensative => false}
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i { message: "That's not an email address" }
 
   #costom validation validate :validation_name
   validate :age_fifteen
@@ -21,9 +21,14 @@ class User < ActiveRecord::Base
   def age_fifteen
   	if ((Date.today - birthday) / 365).floor < 15
   		errors.add(:birthday, "can't be bellow 15")
+  	end
   end
 
-
-
-
+  before_save do |user|
+  	user.active = false if user.first_name.blank? || user.last_name.blank?
+  	else
+  		user.active = true
+  	end
+  end
+  
 end
