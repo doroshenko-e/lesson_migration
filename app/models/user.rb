@@ -5,6 +5,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :birthday, :active
+  has many :images, as: :imageable
   #scope :name, -> {where ("first_name ILIKE 'j%'")}
   #scope :age, ->{where ("Date.today - 21 >= ?", birthday)}
   scope :age_active, -> {where ()}
