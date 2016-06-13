@@ -30,14 +30,9 @@ class User < ActiveRecord::Base
   	end
   end
 
-  #join method for first and last names
-  def full_name
-  	"#{self.first_name} + #{self.last_name}"
-  end
-
   #selects users with query ni first nae or last name
-  def self.serch_by_full_name(query)
-  	where("full_name ILIKE ?", "%#{query}%")
+  def self.search_name(query)
+  	where("first_name ILIKE ? or last_name ILIKE ?", "%#{query}%", "%#{query}%")# | ("last_nmae ILIKE ?", "%#{query}%")} 
   end
 
 end
