@@ -7,13 +7,14 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :birthday, :active
   has_many :images, as: :imageable
 
-  #scope :age, -> {where ("Date.today - 21.year >= ?", birthday)}
+  scope :age, where("Date.today - 21.year >= ?", :birthday)
   scope :active, where(:active => true)
   
+  validate :age_fifteen?
   validates :email, :uniqueness => {:case_sensative => false}
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
-  before_create do |user|
+  before_save do |user|
   	user.active = true if user.first_name.present? && user.last_name.present?
   	#else
   	#user.active = false
@@ -21,11 +22,10 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def age_fifteen
-  	if ((Date.today - birthday) / 365).floor < 15
+  #something wrong
+  def age_fifteen?
+  	if (Date.today - 15.year) >= birthday
   		errors.add(:birthday, "can't be bellow 15")
   	end
   end
-
 end
