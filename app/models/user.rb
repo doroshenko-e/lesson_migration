@@ -5,26 +5,19 @@
 
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :birthday, :active
-  has many :images, as: :imageable
-  #scope :name, -> {where ("first_name ILIKE 'j%'")}
-  #scope :age, ->{where ("Date.today - 21 >= ?", birthday)}
-  scope :age_active, -> {where ()}
+  has_many :images, as: :imageable
+
+  #scope :age, -> {where ("Date.today - 21.year >= ?", birthday)}
+  scope :active, where(:active => true)
   
   validates :email, :uniqueness => {:case_sensative => false}
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i { message: "That's not an email address" }
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
-  #costom validation validate :validation_name
-  validate :age_fifteen
-
-  #def costom_validation_name
-  #	
-  #end
-
-  before_save do |user|
+  before_create do |user|
   	user.active = true if user.first_name.present? && user.last_name.present?
-  	else
-  		user.active = false
-  	end
+  	#else
+  	#user.active = false
+  	#end
   end
 
   private
