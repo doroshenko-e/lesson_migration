@@ -31,9 +31,7 @@ class User < ActiveRecord::Base
 
   #selects users with query in first or last name 
   def self.search_name(query)
-  	#don't know which line better
-  	where("first_name ILIKE :query or last_name ILIKE :query", :query => "%#{query}%")
-  	#where("first_name ILIKE ? or last_name ILIKE ?",  "%#{query}%", "%#{query}%")
+  	where("first_name ILIKE ? or last_name ILIKE ?",  "%#{query}%", "%#{query}%")
   end
 
 end
