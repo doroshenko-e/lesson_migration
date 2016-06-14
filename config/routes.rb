@@ -1,6 +1,11 @@
 Lesson2::Application.routes.draw do
- resources :users
- root to: 'users#index'
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :sessions
+  resources :users
+  root to: 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
