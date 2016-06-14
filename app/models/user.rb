@@ -4,7 +4,8 @@
 # +5) Добавить callback который перед save будет смотреть если Имя или Фамилия не указаны то active флаг становится в false. Если всё указано, то тогда true
 
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :birthday, :active
+	has_secure_password
+  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password
   has_many :images, as: :imageable
 
   scope :age, where("birthday < ?", 21.year.ago) #under 21 year
