@@ -19,12 +19,13 @@ class User < ActiveRecord::Base
   	user.active = true if user.first_name.present? && user.last_name.present?
   end
 
+
   private
 
   #Method for age validation
   def age_fifteen?
   	if (self.birthday + 15.year) < Date.today
-  		errors.add(:birthday, "can't be bellow 15")
+
   	end
   end
 
