@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   scope :active, where(:active => true) #active
   scope :active_above, -> { active.age } #active under 21 year
   
-  validate :age_fifteen?, :massage => "can't be bellow 15"
+  validate :age_fifteen?#, :massage => "can't be bellow 15"
   validates :email, :uniqueness => {:case_sensative => false}
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
 
   #Method for age validation
   def age_fifteen?
-  	if (self.birthday + 15.year) < Date.today
-
+  	if (self.birthday + 15.year) > Date.today
+      errors.add(:birthday, "You are too young")
   	end
   end
 
