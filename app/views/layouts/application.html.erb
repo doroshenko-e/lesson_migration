@@ -12,9 +12,9 @@
         <% if current_user %>
           Logged in as <%= current_user.email %>.
           <%= link_to "Log Out", logout_path %>
-        <% else %>
-          <%= link_to "Sign Up", signup_path %> or
-          <%= link_to "Log In", login_path %>
+        <% else %> 
+          <%= link_to "Sign Up", signup_path, id:"new_user", remote: true %> or
+          <%= link_to "Log In", login_path %> 
         <% end %>
       </div>
 

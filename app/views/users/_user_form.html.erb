@@ -1,7 +1,7 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, id: "user_form" do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
-      <h2>Form is invalid</h2>
+      <h2>Form error</h2>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :birthday %><br />
-    <%= f.date_select :birthday %>
+    <%= f.date_select :birthday, {:start_year => 1900, :end_year => Date.today.year}%>
   </div>
   <div class="field">
     <%= f.label :password %><br />
