@@ -7,24 +7,36 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div class="navbar">
-      <div class="row">
-        <% if current_user %>
-          Logged in as <%= current_user.email %>.
-          <%= link_to "Log Out", logout_path %>
-        <% else %> 
-            <%= button_to "Sign Up", signup_path, class: "btn-success", method: "get" %>
-            <%= render "sessions/login"  %> 
-          <% end %>
+    <header class="row">
+      <div class="container">
+        <div class="navbar-collapse">
+          <div class="navbar-header">
+           <%= link_to "Main", root_path, class:"navbar-brand" %>
+            <% if current_user %>
+              Logged in as <%= current_user.email %>.
+              <%= link_to "Log Out", logout_path %>
+            <% else %>
+              <div class="navbar-form navbar-right">
+                <%= button_to "Sign Up", signup_path, class: "btn-primary", method: "get" %>
+              </div> 
+              <div class="navbar-form navbar-right">
+                <%= render "sessions/login"  %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
 
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
+    <%= yield %>
 
-      <%= yield %>
-    </div>
+
+    <footer>
+      
+    </footer>
+   
   </body>
 </html>
