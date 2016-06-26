@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def index
-  
+    @users = User.all  
   end
 
   def new
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
      respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to users_path, notice: 'User was successfully created.' }
         format.js
       else
