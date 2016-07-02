@@ -8,9 +8,9 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="sortable">
     <% @users.each do |user| %>
-      <tr>
+      <tr class="ui-state-default">
         <td><%= user.first_name %></td>
         <td><%= user.email %></td>
         <td><%= user.birthday %></td>
