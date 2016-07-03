@@ -7,8 +7,14 @@ gem 'rails', '3.2.22.2'
 
 gem 'pg'
 gem 'bootstrap-sass', '3.1.1.0'
+
 gem 'sass-rails',   '~> 3.2.3'
+
 gem 'slim', '~> 3.0', '>= 3.0.7'
+
+gem 'will_paginate', '~> 3.0.6'
+
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 
 
 # Gems used only for assets and not required
