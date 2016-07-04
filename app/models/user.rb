@@ -5,8 +5,9 @@
 
 class User < ActiveRecord::Base
 	has_secure_password
-  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation, :images_attributes
   has_many :images, as: :imageable
+  accepts_nested_attributes_for :images
 
   scope :age, where("birthday < ?", 21.year.ago) #under 21 year
   scope :active, where(:active => true) #active

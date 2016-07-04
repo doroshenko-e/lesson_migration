@@ -5,6 +5,7 @@ Lesson2::Application.routes.draw do
 
   resources :sessions
   resources :users
+  map.resources :users, :has_many => :images
   root to: 'users#index'
 
   # The priority is based upon order of creation:
