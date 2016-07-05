@@ -1,14 +1,18 @@
+  <script>
+
+  </script>
+<%= will_paginate @users %>
 <table class="table" >
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
       <th>Birthday</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody id="sortable">
+  <tbody class="sortable">
     <% @users.each do |user| %>
       <tr class="ui-state-default">
         <td><%= user.first_name %></td>
@@ -20,4 +24,9 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @users %>
+<ul class="sortable">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item 4</li>
+</ul>
