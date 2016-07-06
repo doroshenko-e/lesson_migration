@@ -1,7 +1,10 @@
-<%= form_tag sessions_path do%>
-  <%= text_field_tag :email, params[:email], placeholder: "Email" %>
-  
-  <%= password_field_tag(:password, "", placeholder: "Password") %>
+<div class="navbar-form navbar-left" >
+	
+	<%= form_tag sessions_path do%>
+	  <%= text_field_tag :email, params[:email], placeholder: "Email" %>
+	  
+	  <%= password_field_tag(:password, "", placeholder: "Password") %>
 
- 	<%= submit_tag "Log In", class: "btn-success" %>
-<% end %>
+	 	<%= submit_tag "Log In", class: "btn-success" %>
+	<% end %>
+</div>
