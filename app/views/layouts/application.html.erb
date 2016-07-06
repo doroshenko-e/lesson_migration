@@ -29,11 +29,14 @@
               <li class="active navbar-form navbar-left">
                 <%= button_to "Log Out", logout_path, class: "btn-primary", method: "get" %>
               </li>
+              <li class="active navbar-form navbar-left">
+                <%= button_to "Edit profile", edit_user_url(current_user), class: "btn-info",  method: "get"%>
+              </li>
             </ul>
           <% else %>
             <ul class="nav navbar-nav navbar-right">
               <li class="active">
-                <%= render "sessions/login"  %>
+                <%= render "sessions/login" %>
               </li>
               <li class="active navbar-form navbar-left">
                 <%= button_to "Sign Up", signup_path, class: "btn-primary", method: "get" %>
