@@ -2,44 +2,44 @@
 <html>
   <head>
     <title>New App</title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <div class="navbar-brand" >
-            <%= link_to "Main", root_path %>
+    <nav class='navbar navbar-default'>
+      <div class='container-fluid'>
+        <div class='navbar-header'>
+          <div class='navbar-brand' >
+            <%= link_to 'Main', root_path %>
           </div>
         </div>
   
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
           <% if current_user %>
-            <ul class="nav navbar-nav">
-              <li class="active">
-                <%= link_to "Users", users_path %>
+            <ul class='nav navbar-nav'>
+              <li class='active'>
+                <%= link_to 'Users', users_path %>
               </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active navbar-form navbar-left">
+            <ul class='nav navbar-nav navbar-right'>
+              <li class='active navbar-form navbar-left'>
                 Logged in as <%= current_user.email %>
               </li>
-              <li class="active navbar-form navbar-left">
-                <%= button_to "Log Out", logout_path, class: "btn-primary", method: "get" %>
+              <li class='active navbar-form navbar-left'>
+                <%= button_to 'Log Out', logout_path, class: 'btn-primary', method: 'get' %>
               </li>
-              <li class="active navbar-form navbar-left">
-                <%= button_to "Edit profile", edit_user_url(current_user), class: "btn-info",  method: "get"%>
+              <li class='active navbar-form navbar-left'>
+                <%= button_to 'Edit profile', edit_user_url(current_user), class: 'btn-info',  method: 'get'%>
               </li>
             </ul>
           <% else %>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <%= render "sessions/login" %>
+            <ul class='nav navbar-nav navbar-right'>
+              <li class='active'>
+                <%= render 'sessions/login' %>
               </li>
-              <li class="active navbar-form navbar-left">
-                <%= button_to "Sign Up", signup_path, class: "btn-primary", method: "get" %>
+              <li class='active navbar-form navbar-left'>
+                <%= button_to 'Sign Up', signup_path, class: 'btn-primary', method: 'get' %>
               </li>
             </ul>
           <% end %>
@@ -48,9 +48,9 @@
     </nav>
 
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <%= content_tag :div, msg, id: 'flash_#{name}' %>
     <% end %>
-    <div class="col-md-10 col-md-offset-1">
+    <div class='col-md-10 col-md-offset-1'>
 
       <%= yield %>
 

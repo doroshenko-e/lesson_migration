@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-      <div class="error_messages">
+      <div class='error_messages'>
         <h2>User form</h2>
         <ul>
           <% @user.errors.full_messages.each do |message| %>
@@ -9,16 +9,16 @@
       </div>
     <% end %>
 
-    <div class="form-group">
-      <%= f.text_field :first_name, placeholder: "First name" %> </br> 
+    <div class='form-group'>
+      <%= f.text_field :first_name, placeholder: 'First name' %> </br> 
     </div>
-    <div class="form-group">
-      <%= f.text_field :last_name, placeholder: "Last name"%> </br>
+    <div class='form-group'>
+      <%= f.text_field :last_name, placeholder: 'Last name'%> </br>
     </div>
-    <div class="form-group">
-      <%= f.text_field :email, placeholder: "Email" %> </br>
+    <div class='form-group'>
+      <%= f.text_field :email, placeholder: 'Email' %> </br>
     </div>
-    <div class="form-group">
+    <div class='form-group'>
       <%= f.label :birthday %><br />
       <%= f.date_select :birthday, {:start_year => 1900, :end_year => Date.today.year}%>
     </div>
