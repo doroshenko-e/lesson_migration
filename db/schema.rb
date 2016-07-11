@@ -11,24 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160711071525) do
+ActiveRecord::Schema.define(version: 20_160_711_071_525) do
 
-  create_table "images", :force => true do |t|
-    t.string   "image_type"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "image_file"
+  create_table 'images', force: true do |t|
+    t.string   'image_type'
+    t.integer  'imageable_id'
+    t.string   'imageable_type'
+    t.datetime 'created_at',     null: false
+    t.datetime 'updated_at',     null: false
+    t.string   'image_file'
   end
 
-  create_table "users", :force => true do |t|
-    t.string  "first_name",      :null => false
-    t.string  "email"
-    t.string  "last_name"
-    t.date    "birthday"
-    t.boolean "active"
-    t.string  "password_digest"
+  create_table 'users', force: true do |t|
+    t.string  'first_name', null: false
+    t.string  'email'
+    t.string  'last_name'
+    t.date    'birthday'
+    t.boolean 'active'
+    t.string  'password_digest'
   end
-
 end
