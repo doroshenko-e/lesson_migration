@@ -20,6 +20,9 @@ gem 'rubocop', '~> 0.41.1', require: false
 
 gem 'reek', '~> 4.1', '>= 4.1.1'
 
+gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
